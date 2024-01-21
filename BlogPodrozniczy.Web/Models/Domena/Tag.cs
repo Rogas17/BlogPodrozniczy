@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Nazwa { get; set; }
-        public string PokazanaNazwa { get; set; }
+        public string WyświetlanaNazwa { get; set; }
         public ICollection<BlogPost> Posty { get; set; }
     }
 }
