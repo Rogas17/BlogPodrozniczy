@@ -1,4 +1,5 @@
 using BlogPodrozniczy.Web.Data;
+using BlogPodrozniczy.Web.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BlogDB>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("BlogDBConnectionString")));
+
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
 var app = builder.Build();
 

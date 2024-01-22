@@ -27,11 +27,40 @@
                                 Admin
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" 
+                                <li>
+                                    <a class="dropdown-item" 
                                     asp-area=""
                                     asp-controller="AdminTagi"
                                     asp-action="Add">
-                                Add Tag</a></li>
+                                    Dodaj Tag</a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="AdminTagi"
+                                       asp-action="List">
+                                        Pokaż Tagi
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="AdminBlogPost"
+                                       asp-action="Add">
+                                        Dodaj Posta
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-area=""
+                                       asp-controller="AdminBlogPost"
+                                       asp-action="List">
+                                        Wyświetl Posty
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </li>

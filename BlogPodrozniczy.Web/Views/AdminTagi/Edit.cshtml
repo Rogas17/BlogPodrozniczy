@@ -1,0 +1,48 @@
+﻿@model BlogPodrozniczy.Web.Models.ViewModels.EditTagRequest
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Edytuj Tag - Admin Functionality</h1>
+    </div>
+</div>
+
+
+<div class="container py-5">
+
+    @if (Model != null)
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Id</label>
+                <input type="text" id="id" class="form-control" asp-for="Id" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nazwa</label>
+                <input type="text" id="nazwa" class="form-control" asp-for="Nazwa" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Wyświetlana Nazwa</label>
+                <input type="text" id="wyświetlanaNazwa" class="form-control" asp-for="WyświetlanaNazwa" />
+            </div>
+
+            <div class="mb-3">
+                <div d-flex>
+                    <button type="submit" class="btn btn-dark">Zaktualizuj</button>
+                    <button class="btn btn-danger ms-2" type="submit" asp-area="" asp-controller="AdminTagi" asp-action="Delete">
+                        Usuń
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>Brak tagu</p>
+    }
+    
+</div>

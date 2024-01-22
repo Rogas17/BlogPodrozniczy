@@ -1,0 +1,45 @@
+﻿@model List<BlogPodrozniczy.Web.Models.Domena.Tag>
+@{
+}
+
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Pokaż Tagi - Admin Functionality</h1>
+    </div>
+</div>
+
+<div class="container" py-5>
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nazwa</th>
+                    <th>Wyświetlana Nazwa</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                    <tr>
+                        <td>@tag.Id</td>
+                        <td>@tag.Nazwa</td>
+                        <td>@tag.WyświetlanaNazwa</td>
+                        <td>
+                            <a asp-area="" asp-controller="AdminTagi" asp-action="Edit"
+                            asp-route-id="@tag.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Brak Tagów</p>
+    }
+</div>
