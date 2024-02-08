@@ -1,8 +1,87 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model BlogPodrozniczy.Web.Models.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Strona Główna";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row align-item-center g-5 py-5">
+        <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                Blog Podróżniczy
+            </h1>
+            <p class="lead">
+                Witaj na naszym blogu podróżniczym, gdzie zapraszamy Cię do niezapomnianej
+                przygody przez najpiękniejsze zakątki naszego globu! Tutaj dzielimy się
+                naszymi osobistymi doświadczeniami, inspirującymi historiami oraz
+                praktycznymi poradami z podróży, które pomogą Ci odkryć świat w sposób 
+                autentyczny i niepowtarzalny. Niezależnie od tego, czy masz ochotę na
+                egzotyczną wyprawę po dalekich kontynentach, czy poszukujesz ukrytych
+                skarbów w najbliższej okolicy, nasz blog jest dla Ciebie. Przygotuj się
+                na niekończące się marzenia o podróżach i gotuj z nami nowe przygody na
+                drodze!
+            </p>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <img src="https://images.pexels.com/photos/356807/pexels-photo-356807.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            alt="Blog Podróżniczy" 
+            class="d-block mx-lg-auto img-fluid" width="800"/>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 d-flex">
+            @if (Model != null && Model.Tags.Any())
+            {
+                foreach (var tag in Model.Tags)
+                {
+                    <span class="badge bg-dark me-1">
+                        @tag.Nazwa
+                    </span>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            @if (Model != null && Model.BlogPosts.Any())
+            {
+                foreach (var blogPost in Model.BlogPosts)
+                {
+                    <div class="mb-5 bg-light box-shadow p-5">
+                        <img src="@blogPost.UrlZdjęcia" alt="@blogPost.Nagłówek"
+                        class="mb-2 d-block img-fluid" />
+                        <h2 class="mb-4">@blogPost.Nagłówek</h2>
+                        <p class="mb-4">
+                            Autor: @blogPost.Autor
+                            <br />
+                            Data Publikacji: @blogPost.DataPublikacji.ToShortDateString()
+                        </p>
+
+                        <p class="mb-4">
+                            @foreach (var tag in blogPost.Tagi)
+                            {
+                                <span class="badge bg-secondary me-1">@tag.Nazwa</span>
+                            }
+                        </p>
+
+                        <p class="mb-5">@blogPost.KrótkiOpis</p>
+
+                        <a class="btn btn-dark"
+                        asp-area=""
+                        asp-controller="Blogs"
+                        asp-action="Index"
+                        asp-route-urlHandle="@blogPost.UrlHandle"
+                        >Więcej</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>

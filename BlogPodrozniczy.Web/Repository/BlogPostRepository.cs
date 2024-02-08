@@ -43,6 +43,12 @@ namespace BlogPodrozniczy.Web.Repository
             return await blogDB.Posty.Include(x => x.Tagi).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<BlogPost?> GetByUrlHandleAsync(string urlHandle)
+        {
+            return await blogDB.Posty.Include(x => x.Tagi)
+                .FirstOrDefaultAsync(x => x.UrlHandle == urlHandle);
+        }
+
         public async Task<BlogPost?> UpdateAsync(BlogPost blogPost)
         {
             var existingBlog = await blogDB.Posty.Include(x => x.Tagi).FirstOrDefaultAsync(x => x.Id == blogPost.Id);

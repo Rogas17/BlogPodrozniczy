@@ -1,0 +1,39 @@
+﻿@model BlogPodrozniczy.Web.Models.Domena.BlogPost
+
+@{
+    ViewData["Title"] = Model.TytułStrony;
+}
+
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+            @if (Model != null)
+            {
+                <h1 class="mb-3">@Model.Nagłówek</h1>
+
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="text-secondary">@Model.Autor</span>
+                    <span class="text-secondary">@Model.DataPublikacji.ToShortDateString()</span>
+                </div>
+
+                <div class="mb-3 d-flex">
+                    @foreach (var tag in Model.Tagi)
+                    {
+                        <span class="badge bg-secondary me-1">@tag.Nazwa</span>
+                    }
+                </div>
+
+                <img src="@Model.UrlZdjęcia" class="d-block img-fluid mb-3"/>
+
+                <div class="mb-3 blog-details-content">
+                    @Html.Raw(Model.Treść)
+                </div>
+            }
+            else
+            {
+                <p>Nie znaleziono Posta</p>
+            }
+        </div>
+    </div>
+</div>
