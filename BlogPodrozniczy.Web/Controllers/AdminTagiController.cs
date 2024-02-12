@@ -2,11 +2,13 @@
 using BlogPodrozniczy.Web.Models.Domena;
 using BlogPodrozniczy.Web.Models.ViewModels;
 using BlogPodrozniczy.Web.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogPodrozniczy.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminTagiController : Controller
     {
         private readonly ITagRepository tagRepository;
@@ -23,6 +25,7 @@ namespace BlogPodrozniczy.Web.Controllers
         }
 
         [HttpPost]
+        [ActionName("Add")]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
             // Mapping AddTagRequest to Tag domain model
@@ -95,6 +98,12 @@ namespace BlogPodrozniczy.Web.Controllers
             }
 
             return RedirectToAction("Edit", new { id = editTagRequest.Id });
+        }
+
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

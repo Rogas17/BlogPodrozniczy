@@ -5,7 +5,7 @@ namespace BlogPodrozniczy.Web.Data
 {
     public class BlogDB : DbContext
     {
-        public BlogDB(DbContextOptions options) : base(options)
+        public BlogDB(DbContextOptions<BlogDB> options) : base(options)
         {
         }
 

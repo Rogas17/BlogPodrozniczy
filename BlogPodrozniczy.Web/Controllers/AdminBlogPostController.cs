@@ -1,12 +1,14 @@
 ﻿using BlogPodrozniczy.Web.Models.Domena;
 using BlogPodrozniczy.Web.Models.ViewModels;
 using BlogPodrozniczy.Web.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.OutputCaching;
 
 namespace BlogPodrozniczy.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminBlogPostController : Controller
     {
         private readonly ITagRepository tagRepository;
