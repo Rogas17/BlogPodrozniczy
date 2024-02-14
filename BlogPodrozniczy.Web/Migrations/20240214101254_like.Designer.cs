@@ -4,6 +4,7 @@ using BlogPodrozniczy.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogPodrozniczy.Web.Migrations
 {
     [DbContext(typeof(BlogDB))]
-    partial class BlogDBModelSnapshot : ModelSnapshot
+    [Migration("20240214101254_like")]
+    partial class like
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,32 +68,6 @@ namespace BlogPodrozniczy.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posty");
-                });
-
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostComment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BlogPostId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogPostId");
-
-                    b.ToTable("BlogPostComment");
                 });
 
             modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostLike", b =>
@@ -146,15 +123,6 @@ namespace BlogPodrozniczy.Web.Migrations
                     b.ToTable("BlogPostTag");
                 });
 
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostComment", b =>
-                {
-                    b.HasOne("BlogPodrozniczy.Web.Models.Domena.BlogPost", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostLike", b =>
                 {
                     b.HasOne("BlogPodrozniczy.Web.Models.Domena.BlogPost", null)
@@ -181,8 +149,6 @@ namespace BlogPodrozniczy.Web.Migrations
 
             modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPost", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618

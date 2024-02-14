@@ -10,7 +10,8 @@ namespace BlogPodrozniczy.Web.Data
         }
 
         public DbSet<BlogPost> Posty { get; set; }
-
         public DbSet<Tag> Tagi { get; set; }
+        public DbSet<BlogPostLike> BlogPostLike { get; set; }
+        public DbSet<BlogPostComment> BlogPostComment { get; set; }
     }
 }

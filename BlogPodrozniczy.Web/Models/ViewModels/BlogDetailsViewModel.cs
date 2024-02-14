@@ -1,6 +1,8 @@
-﻿namespace BlogPodrozniczy.Web.Models.Domena
+﻿using BlogPodrozniczy.Web.Models.Domena;
+
+namespace BlogPodrozniczy.Web.Models.ViewModels
 {
-    public class BlogPost
+    public class BlogDetailsViewModel
     {
         public Guid Id { get; set; }
         public string Nagłówek { get; set; }
@@ -14,7 +16,10 @@
         public bool Widoczność { get; set; }
         public ICollection<Tag> Tagi { get; set; }
 
-        public ICollection<BlogPostLike> Likes { get; set; }
-        public ICollection<BlogPostComment> Comments { get; set; }
+        public int TotalLikes { get; set; }
+
+        public bool Liked { get; set; }
+        public string CommentDescription { get; set; }
+        public IEnumerable<BlogComment> Comments { get; set; }
     }
 }
