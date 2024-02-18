@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BlogDB>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("BlogDBConnectionString")));
+options.UseSqlite(builder.Configuration.GetConnectionString("BlogDBConnectionString")));
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("BlogAuthDBConnectionString")));
+options.UseSqlite(builder.Configuration.GetConnectionString("BlogAuthDBConnectionString")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AuthDbContext>();

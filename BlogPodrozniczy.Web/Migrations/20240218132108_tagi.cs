@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogPodrozniczy.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class pierwszy : Migration
+    public partial class tagi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,16 +15,16 @@ namespace BlogPodrozniczy.Web.Migrations
                 name: "Posty",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nagłówek = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TytułStrony = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Treść = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    KrótkiOpis = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UrlZdjęcia = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UrlHandle = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataPublikacji = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Autor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Widoczność = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Nagłówek = table.Column<string>(type: "TEXT", nullable: false),
+                    TytułStrony = table.Column<string>(type: "TEXT", nullable: false),
+                    Treść = table.Column<string>(type: "TEXT", nullable: false),
+                    KrótkiOpis = table.Column<string>(type: "TEXT", nullable: false),
+                    UrlZdjęcia = table.Column<string>(type: "TEXT", nullable: false),
+                    UrlHandle = table.Column<string>(type: "TEXT", nullable: false),
+                    DataPublikacji = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Autor = table.Column<string>(type: "TEXT", nullable: false),
+                    Widoczność = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,9 +35,9 @@ namespace BlogPodrozniczy.Web.Migrations
                 name: "Tagi",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nazwa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PokazanaNazwa = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Nazwa = table.Column<string>(type: "TEXT", nullable: false),
+                    WyświetlanaNazwa = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,8 +48,8 @@ namespace BlogPodrozniczy.Web.Migrations
                 name: "BlogPostTag",
                 columns: table => new
                 {
-                    PostyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PostyId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    TagiId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -5,7 +5,7 @@
 namespace BlogPodrozniczy.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class trzy : Migration
+    public partial class Dokończenie : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

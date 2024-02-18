@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogPodrozniczy.Web.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20240216163052_blogdbauth")]
-    partial class blogdbauth
+    [Migration("20240218135547_Dokończenie")]
+    partial class Dokończenie
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,15 +160,15 @@ namespace BlogPodrozniczy.Web.Migrations.AuthDb
                         {
                             Id = "142fc063-5e35-4bd0-829c-dbbfcc225474",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad5c1b69-1716-4752-be74-ce62b28e5598",
+                            ConcurrencyStamp = "0cf176dd-92c0-4ba8-ba11-31cccc20cfe9",
                             Email = "superadmin@blog.pl",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@BLOG.PL",
                             NormalizedUserName = "SUPERADMIN@BLOG.PL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMLnQGvV767gYF9FCd6n2YnCSV4Lge+KbEwUNvTJEiigJpodVYMFsrBu0A70iiGW5A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJvqOkHsKsy7TYWDwudph7mYPcprGhmOWodi2xCFdUTBFqAfWUlOypZjJfU+/7p4rw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6d56f1be-6dca-4351-845f-3b74bb96a606",
+                            SecurityStamp = "99f3b170-69fb-42fb-b24c-5036f645896e",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@blog.pl"
                         });

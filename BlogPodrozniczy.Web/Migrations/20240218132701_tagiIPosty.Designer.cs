@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogPodrozniczy.Web.Migrations
 {
     [DbContext(typeof(BlogDB))]
-    [Migration("20240216162718_blogdb")]
-    partial class blogdb
+    [Migration("20240218132701_tagiIPosty")]
+    partial class tagiIPosty
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,51 +65,6 @@ namespace BlogPodrozniczy.Web.Migrations
                     b.ToTable("Posty");
                 });
 
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostComment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("BlogPostId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogPostId");
-
-                    b.ToTable("BlogPostComment");
-                });
-
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostLike", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("BlogPostId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogPostId");
-
-                    b.ToTable("BlogPostLike");
-                });
-
             modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.Tag", b =>
                 {
                     b.Property<Guid>("Id")
@@ -144,24 +99,6 @@ namespace BlogPodrozniczy.Web.Migrations
                     b.ToTable("BlogPostTag");
                 });
 
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostComment", b =>
-                {
-                    b.HasOne("BlogPodrozniczy.Web.Models.Domena.BlogPost", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPostLike", b =>
-                {
-                    b.HasOne("BlogPodrozniczy.Web.Models.Domena.BlogPost", null)
-                        .WithMany("Likes")
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BlogPostTag", b =>
                 {
                     b.HasOne("BlogPodrozniczy.Web.Models.Domena.BlogPost", null)
@@ -175,13 +112,6 @@ namespace BlogPodrozniczy.Web.Migrations
                         .HasForeignKey("TagiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BlogPodrozniczy.Web.Models.Domena.BlogPost", b =>
-                {
-                    b.Navigation("Comments");
-
-                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,6 +3,7 @@ using System;
 using BlogPodrozniczy.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogPodrozniczy.Web.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    partial class AuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240218135014_likeAdnComment")]
+    partial class likeAdnComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.15");
@@ -157,15 +160,15 @@ namespace BlogPodrozniczy.Web.Migrations.AuthDb
                         {
                             Id = "142fc063-5e35-4bd0-829c-dbbfcc225474",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a7b9eb61-3020-4ed0-a8c1-7dcd88394f6e",
+                            ConcurrencyStamp = "13af5a71-522f-4c05-a6f1-c9bc8d51bd0b",
                             Email = "superadmin@blog.pl",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@BLOG.PL",
                             NormalizedUserName = "SUPERADMIN@BLOG.PL",
-                            PasswordHash = "AQAAAAIAAYagAAAAECRzIC/PL3botxjWanUbYxCx6ZTiHE8yKSB06h29Ja2VcsqHXHlfnTIrpoIzLSvaxQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL9g4z15VO9wfjDmPEBul7LIX8XDPSD2Ng994Tjye9EW8ePhKAZK89r9GGB6jOPcuA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "52d4914b-703d-4fb2-85b0-767761585028",
+                            SecurityStamp = "65a1bf4d-5ffd-4a74-be07-bc09c8e8ec6b",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@blog.pl"
                         });
